@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemple d'animation avec jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .image {
+        width: 300px;
+        /* position: absolute; */
+        transition: transform 1s ease; /* Transition de rotation */
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $("#bouton-diaporama").click(function () {
+          var images = $(".image");
+          var lastImage = images.last();
+
+          // Récupère l'attribut "src" de la dernière image
+          var lastImageSrc = lastImage.attr("src");
+
+          // Parcours les images en sens inverse et met à jour les attributs "src"
+          for (var i = images.length - 1; i >= 1; i--) {
+            var currentImage = $(images[i]);
+            var previousImage = $(images[i - 1]);
+            var previousImageSrc = previousImage.attr("src");
+            currentImage.attr("src", previousImageSrc);
+          }
+
+          // Met à jour l'attribut "src" de la première image avec celui de la dernière image
+          var firstImage = images.first();
+          firstImage.attr("src", lastImageSrc);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Exemple d'animation avec jQuery</h1>
+
+    <!-- Insérez ici vos balises <img> avec la classe "image" -->
+    <img class="image" src="./img/gato-calvo.jpg" alt="Image 1" />
+    <img class="image" src="./img/gato-2.jpg" alt="Image 1" />
+
+    <button id="bouton-diaporama">Diaporama</button>
+  </body>
+</html>

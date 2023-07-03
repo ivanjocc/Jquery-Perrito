@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <style>
+      .gato {
+        width: 300px;
+        transition: opacity 4s ease;
+      }
+
+      .desaparicion {
+        opacity: 0;
+      }
+    </style>
+
+    <script>
+      $(document).ready(function () {
+        $(".gato").click(function () {
+          $(this).addClass("desaparicion");
+
+          setTimeout(
+            function () {
+              $(this).removeClass("desaparicion");
+            }.bind(this),
+            4000
+          );
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <img class="gato" src="./img/gato-calvo.jpg" alt="gato-calvo" />
+    <img class="gato" src="./img/gato-calvo.jpg" alt="gato-calvo" />
+    <img class="gato" src="./img/gato-calvo.jpg" alt="gato-calvo" />
+  </body>
+</html>

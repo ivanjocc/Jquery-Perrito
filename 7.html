@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <style>
+      .gato,
+      .gato-2,
+      .gato-3,
+      .gato-4 {
+        width: 300px;
+        height: 300px;
+        transition: transform 1s ease;
+      }
+    </style>
+
+    <script>
+      $(document).ready(function () {
+        $(".gato-4").click(function () {
+          $(".gato-2, .gato-3, .gato-4").animate(
+            { left: "+=300px" },
+            1000,
+            function () {
+              $(".gato").hide(1000, function () {
+                var im1Src = $(".gato").attr("src");
+                var im4Src = $(".gato-4").attr("src");
+                $(".gato")
+                  .attr("src", im4Src)
+                  .show(1000, function () {
+                    $(".gato-2, .gato-3, .gato-4").animate(
+                      { left: "-=300px" },
+                      1000
+                    );
+                  });
+                $(".gato-4").attr("src", im1Src);
+              });
+            }
+          );
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <img class="gato" src="./img/gato-calvo.jpg" alt="gato-calvo" />
+    <img class="gato-2" src="./img/gato-2.jpg" alt="gato-calvo" />
+    <img class="gato-3" src="./img/gato-3.jpg" alt="gato-calvo" />
+    <img class="gato-4" src="./img/gato-calvo.jpg" alt="gato-calvo" />
+  </body>
+</html>
